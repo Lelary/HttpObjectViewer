@@ -12,13 +12,13 @@ def example_get(host, url):
     print(response.status, response.reason)
     print(data.decode())
 
-def example_post(host, url):
+def example_post(host, url, namelist):
     conn = HTTPConnection(host)
     headers = {
         'Content-Type': 'text/json',
     }
 
-    data = {'names':['aaa','bbb','ccc']}
+    data = {'names':namelist}
 
     conn = HTTPConnection(host)
     conn.request('POST', url, body=json.dumps(data), headers=headers)
@@ -31,6 +31,7 @@ def example_post(host, url):
     print(objlist)
 
     conn.close()
+    return objlist
 
 
 if __name__ == '__main__':

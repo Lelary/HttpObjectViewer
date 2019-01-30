@@ -15,7 +15,7 @@ def get_obj_list_with_xy_position(nameList, min, max):
     objlist = []
     for name in nameList:
         pos = get_random_position(2, min, max)
-        obj = {'name':name, 'x':pos[0], 'y':pos[1]}
+        obj = {'name':name, 'x':pos[0], 'y':pos[1], 'color':name}
         objlist.append(obj)
     return objlist
 
