@@ -52,12 +52,26 @@ def create_animation(objmanager):
     plt.title('test')
     plt.show()
 
+def test_thread(objmgr):
+    for _ in range(10):
+        for obj in objmgr.objlist:
+            obj['x'] = obj['x'] + 10;
+            
+        time.sleep(1)
+
 if __name__ == '__main__':
+    import threading
+
     objlist = [
-        {'name':'a', 'x':10, 'y':10, 'color':'g'},
-        {'name':'b', 'x':20, 'y':20, 'color':'r'},
-        {'name':'c', 'x':30, 'y':30, 'color':'b'},
+        {'name':'r', 'x':10, 'y':10, 'color':'g'},
+        {'name':'g', 'x':20, 'y':20, 'color':'r'},
+        {'name':'b', 'x':30, 'y':30, 'color':'b'},
         ]
-    create_animation(objlist)
+    objmgr = objmanager.objmanager(objlist)   
+
+    t = threading.Thread(target=test_thread, args=(objmgr,), daemon=True) 
+    t.start()
+
+    create_animation(objmgr)
 
 

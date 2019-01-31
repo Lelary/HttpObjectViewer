@@ -1,4 +1,4 @@
-import example_animation
+import object_animation
 import http_client
 import objmanager
 import time
@@ -18,4 +18,4 @@ if __name__ == '__main__':
     t = threading.Thread(target=http_client_thread, args=(objmgr,), daemon=True) 
     t.start()
 
-    example_animation.create_animation(objmgr)
+    object_animation.create_animation(objmgr)
