@@ -2,7 +2,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib import animation
 import time
-import objmanager
+import object_manager
 
 def objlist_to_plotlist(objlist):
     plotlist = {
@@ -67,7 +67,8 @@ if __name__ == '__main__':
         {'name':'g', 'x':20, 'y':20, 'color':'r'},
         {'name':'b', 'x':30, 'y':30, 'color':'b'},
         ]
-    objmgr = objmanager.objmanager(objlist)   
+        
+    objmgr = object_manager.object_manager(objlist)   
 
     t = threading.Thread(target=test_thread, args=(objmgr,), daemon=True) 
     t.start()

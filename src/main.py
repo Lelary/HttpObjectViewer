@@ -1,6 +1,6 @@
 import object_animation
 import http_client
-import objmanager
+import object_manager
 import time
 import threading
 
@@ -13,7 +13,7 @@ def http_client_thread(objmgr):
 
 
 if __name__ == '__main__':
-    objmgr = objmanager.objmanager([])   
+    objmgr = object_manager.object_manager([])   
 
     t = threading.Thread(target=http_client_thread, args=(objmgr,), daemon=True) 
     t.start()
