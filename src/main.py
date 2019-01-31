@@ -15,7 +15,7 @@ def http_client_thread(objmgr):
 if __name__ == '__main__':
     objmgr = objmanager.objmanager([])   
 
-    t = threading.Thread(target=http_client_thread, args=(objmgr,)) 
+    t = threading.Thread(target=http_client_thread, args=(objmgr,), daemon=True) 
     t.start()
 
     example_animation.create_animation(objmgr)
