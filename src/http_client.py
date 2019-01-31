@@ -2,17 +2,7 @@ from http.client import HTTPConnection
 from urllib.parse import urlencode
 import json
 
-def example_get(host, url):
-    conn = HTTPConnection(host)
-    conn.request('GET', url)
-    response = conn.getresponse()
-    data = response.read()
-    conn.close()
-
-    print(response.status, response.reason)
-    print(data.decode())
-
-def example_post(host, url, namelist):
+def query_objects(host, url, namelist):
     conn = HTTPConnection(host)
     headers = {
         'Content-Type': 'text/json',
@@ -35,4 +25,5 @@ def example_post(host, url, namelist):
 
 
 if __name__ == '__main__':
-    example_post('127.0.0.1:8000', '/')
+    namelist = ['r','g','b']
+    query_objects('127.0.0.1:8000', '/', namelist)
