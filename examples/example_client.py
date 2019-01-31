@@ -18,7 +18,6 @@ def example_post(host, url):
         'name': 'aaa',
     })
     headers = {
-        'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': 'text/plain'
     }
 
