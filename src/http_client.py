@@ -25,5 +25,10 @@ def query_objects(host, url, namelist):
 
 
 if __name__ == '__main__':
-    namelist = ['r','g','b']
+    namelist = [
+            {'name':'a', 'color':'r'},
+            {'name':'b', 'color':'g'},
+            {'name':'c', 'color':'b'}
+    ]
+    
     query_objects('127.0.0.1:8000', '/', namelist)

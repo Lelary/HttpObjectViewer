@@ -5,7 +5,14 @@ import time
 import threading
 
 def http_client_thread(objmgr):
-    namelist = ['r','g','b']
+    namelist = [
+            {'name':'a', 'color':'r'},
+            {'name':'b', 'color':'g'},
+            {'name':'c', 'color':'b'},
+            {'name':'d', 'color':'y'},
+            {'name':'e', 'color':'k'},
+    ]
+
     objmgr.objlist = http_client.query_objects('127.0.0.1:8000', '/', namelist)
     for _ in range(10):
         objmgr.objlist = http_client.query_objects('127.0.0.1:8000', '/', namelist)
