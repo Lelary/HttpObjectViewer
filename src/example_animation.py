@@ -2,6 +2,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib import animation
 import time
+import objmanager
 
 def objlist_to_plotlist(objlist):
     plotlist = {
@@ -22,34 +23,34 @@ def objlist_to_xylist(objlist, i):
     xylist = []
 
     for obj in objlist:
-        xylist.append([obj["x"]+i, obj["y"]+i])
+        xylist.append([obj["x"], obj["y"]])
         
     return xylist
 
-def create_scatter(objlist, ax):
-    plotlist = objlist_to_plotlist(objlist)
+def create_scatter(objmanager, ax):
+    plotlist = objlist_to_plotlist(objmanager.objlist)
     scatter = plt.scatter(plotlist["x"], plotlist["y"], color=plotlist["color"])
     #ax.add_patch(scatter)
     return scatter
 
-def update_scatter(i, scatter, objlist):
-    xylist = objlist_to_xylist(objlist, i)
+def update_scatter(i, scatter, objmanager):
+    xylist = objlist_to_xylist(objmanager.objlist, i)
     scatter.set_offsets(xylist)
     return scatter
 
-def create_animation(objlist):
+def create_animation(objmanager):
     fig = plt.gcf()
     ax = plt.axes(xlim=(0,100), ylim=(0,100))
     ax.set_aspect('equal')
     
-    scatter = create_scatter(objlist, ax)
-    anim = animation.FuncAnimation(fig, update_scatter, fargs=(scatter, objlist,), frames=30, interval=50,)
+    scatter = create_scatter(objmanager, ax)
+    anim = animation.FuncAnimation(fig, update_scatter, fargs=(scatter, objmanager,), frames=30, interval=50,)
 
     plt.grid(True)
     plt.xlabel('x')
     plt.ylabel('y')
     plt.title('test')
-    plt.show();
+    plt.show()
 
 if __name__ == '__main__':
     objlist = [
